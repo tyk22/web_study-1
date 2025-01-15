@@ -10,6 +10,7 @@
         .container{
             background-color: lightblue;
             width: 200px; height: 800px;
+            display: flex;
         }
         .item{
             background-color: lightpink;
@@ -18,7 +19,7 @@
     </style>
     <h1>flex-wrap</h1>
     <h2>nowrap</h2>
-    <div class="container">
+    <div class="container" style="flex-wrap: nowrap;">
         <div class="item">10</div>
         <div class="item">20</div>
         <div class="item">30</div>
@@ -27,7 +28,7 @@
         <div class="item">60</div>
     </div>
     <h2>wrap</h2>
-    <div class="container">
+    <div class="container" style="flex-wrap: wrap;">
         <div class="item">10</div>
         <div class="item">20</div>
         <div class="item">30</div>
@@ -36,7 +37,7 @@
         <div class="item">60</div>
     </div>
     <h2>wrap-reverse</h2>
-    <div class="container">
+    <div class="container" style="flex-wrap: wrap-reverse;">
         <div class="item">10</div>
         <div class="item">20</div>
         <div class="item">30</div>

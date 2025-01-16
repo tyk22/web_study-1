@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 태그 접근법</title>
+</head>
+<body>
+    <h2>id 기준 접근</h2>
+    <div id="idTarget">
+        변경전
+    </div>
+    <button type="button" onclick="turnRed();">
+        빨갛게
+    </button>
+    <script>
+        function turnRed(){
+            var it 
+            = document.getElementById('idTarget');
+            it.style.color = 'red';
+            // document.getElementById('idTarget').style.color='red';
+        }
+    </script>
+    <h2>class 기준 접근</h2>
+    <p class="a">p1</p>
+    <span class="b a">span1</span>
+    <p class="b">p2</p>
+    <input type="button" value="a만"
+    onclick="changeOnlyA();">
+    <script>
+        function changeOnlyA(){
+            var el = document.getElementsByClassName('a');
+            console.log(el);
+            //1. 배열접근할때 인덱스로 접근
+            // el[0].style.color='hotpink';
+            //2. 반복문을 사용하여 접근
+            for(var i = 0; i < el.length; i++){
+                // el[i].style.color='green';
+                if(i == 0){
+                    el[i].style.color='red';
+                }else{
+                    el[i].style.color='green';
+                }
+            }
+
+        }
+    </script>
+    <h2>태그명 기준 접근</h2>
+    <ul>
+        <li>HTML5</li>
+        <li>CSS3</li>
+        <li>ES6</li>
+    </ul>
+    <button type="button" onclick="changeJSBlue();">JS 좋아!</button>
+    <script>
+        function changeJSBlue(){
+            var tagEl = document.getElementsByTagName('li');
+            console.log(tagEl);
+            tagEl[2].style.color='blue';
+        }
+    </script>
+    <h2>name 속성 기준 접근</h2>
+    <label>
+        <input type="checkbox" name="food" value="1">
+        짜장면
+    </label><br>
+    <label>
+        <input type="checkbox" name="food" value="2">
+        짬뽕
+    </label><br>
+    <label>
+        <input type="checkbox" name="food" value="3">
+        군만두
+    </label><br>
+    <button type="button" onclick="addReview();">
+        리뷰 이벤트 참여
+    </button>
+    <script>
+        function addReview(){
+            var nameEl = document.getElementsByName('food');
+            console.log(nameEl);
+            // nameEl[2].checked=true;
+
+            var checkStatus = nameEl[2].checked;
+            console.log(checkStatus);
+            if(checkStatus){
+                // 체크되어 있다면
+                nameEl[2].checked = false;
+            }else{
+                // 체크되어 있지 않다면
+                nameEl[2].checked = true;
+            }
+        }
+    </script>
+</body>
+</html>

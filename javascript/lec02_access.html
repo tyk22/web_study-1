@@ -92,5 +92,102 @@
             }
         }
     </script>
+    <h2>선택자 기준 접근</h2>
+    <button type="button" onclick="practiceQuery();">
+        접근하기
+    </button>
+    <script>
+        function practiceQuery(){
+            var one = document.querySelector('#idTarget');
+            // document.getElementById('idTarget'); 위랑 같은 거임
+            one.style.color = 'orange';
+            var many = document.querySelectorAll('.b');
+            many[0].style.color = 'red';
+        }
+    </script>
+    <h2>value 속성 사용하기</h2>
+    <input type="text" id="userName">
+    <input type="button" value="가져오기" id="getNameBtn">
+    <input type="button" value="바꿔주기" id="setNameBtn">
+    <script>
+        document.getElementById('getNameBtn').onclick = function(){
+            var userName = document.getElementById('userName').value;
+            alert(userName);
+        }
+        document.getElementById('setNameBtn').onclick = function(){
+            document.getElementById('userName').value +='김철수';
+            // +=는 복합대입연산자로 value의 값을 추가해줄 수 있음
+        }
+    </script>
+    <h2>style 속성 활용하기</h2>
+    <style>
+        #styleBtn{
+            background-color: cornflowerblue;
+        }
+    </style>
+    <input id="styleBtn" type="button" 
+    value="스타일 변신" onclick="changeStyle();">
+    <script>
+        function changeStyle(){
+            console.log('함수 연결 확인');
+            var st1 = document.getElementById('styleBtn').style.backgroundColor;
+            console.log(st1);
+
+            // 콘솔창에 색상정보가 rgb로 표시됨
+            var ele2 = document.getElementById('styleBtn');
+            var st2 = getComputedStyle(ele2).backgroundColor;
+            console.log(st2);
+        
+            ele2.style.backgroundColor = 'gold';
+        }
+    </script>
+    <h2>컬러박스 연결 연습문제</h2>
+    <!-- 색상 선택 후 -> 변경버튼 클릭하면 -> 색상이 변경되도록 -->
+    <!-- 박스 만들기/연결하기 -->
+    <style>
+        .box-parent > div{
+            width:100px; height: 100px;
+            position:absolute;
+        }
+        #box1{background-color: rgb(0, 0, 0);
+            top:10px; left:5px;
+            z-index: 3;}
+    </style>
+    <input id="palette" type="color">
+    <input id="changePl" type="button" value="변경">
+    <div class="box-parent" style="position:relative">
+        <div id="box1"></div>
+    </div>
+    <script>
+        document.getElementById('changePl').onclick = function(){
+            var colorBox = document.getElementById('palette').value;
+            document.getElementById('box1').style.backgroundColor = colorBox;
+        }
+        // function changeColor(){
+        //     var box = document.getElementById('changePl').style.backgroundColor;
+        //     console.log(box);
+        // }
+    </script><br><br><br><br>
+    <h2>innerHTML</h2>
+    <div id="test1">
+        <p>Hello!</p>
+    </div>
+    <div id="test2">안녕하세요~</div>
+    <input type="button" value="가져오기" onclick="getTag();">
+    <input type="button" value="바꿔주기" onclick="setTag();">
+    <script>
+        function setTag(){
+            document.getElementById('test1').innerHTML += '<h1>Ohhhhh</h1>';
+        }
+        function getTag(){
+            var t1 = document.getElementById('test1').innerHTML;
+            var t2 = document.getElementById('test2').innerHTML;
+            console.log(t1);
+            console.log(t2);
+        }
+    </script>
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>

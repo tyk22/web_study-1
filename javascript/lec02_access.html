@@ -7,16 +7,14 @@
 </head>
 <body>
     <h2>id 기준 접근</h2>
-    <div id="idTarget">
-        변경전
-    </div>
+    <div id="idTarget">변경전</div>
     <button type="button" onclick="turnRed();">
         빨갛게
     </button>
     <script>
         function turnRed(){
             var it 
-            = document.getElementById('idTarget');
+                = document.getElementById('idTarget');
             it.style.color = 'red';
             // document.getElementById('idTarget').style.color='red';
         }

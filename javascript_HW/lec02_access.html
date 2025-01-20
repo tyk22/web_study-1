@@ -7,12 +7,32 @@
 </head>
 <body>
     <h1>HTML 태그에 접근 테스트</h1>
-    <label for="buyer">구매자</label>
-    <input type="text" id="buyer"><br>
-    <label for="name">상품명</label>
-    <input type="text" id="name"><br>
+    <style>
+        #printDiv{
+            border : 1px solid lavender;
+            background-color: cornsilk;
+            width: 400px; height: 100px;
+        }
+    </style>
+    <label for="name">구매자</label>
+    <input type="text" id="name" placeholder="구매자 이름을 입력하세요"><br>
+
+    <label for="product">상품명</label>
+    <input type="text" id="product" placeholder="구매 상품명을 입력하세요"><br>
+
     <label for="price">가격</label>
-    <input type="text" id="price"><br>
-    <input type="button" value="입력값 출력하기">
+    <input type="text" id="price" name="price" placeholder="구매 가격을 입력하세요"><br>
+
+    <input type="button" value="입력값 출력하기" onclick="print();">
+    <div id="printDiv"></div>
+    <script>
+        function print(){
+            let a = document.getElementsByTagName('input')[0].value;
+            let b = document.getElementById('product').value;
+            let c = document.getElementsByName('price')[0].value;
+            document.getElementById('printDiv').innerHTML =
+                '구매자 : '+a+'<br>상품명 : '+b+'<br>가격 : '+c+'원';
+        }
+    </script>
 </body>
 </html>

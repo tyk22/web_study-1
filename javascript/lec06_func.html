@@ -3,9 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>함수</title>
 </head>
 <body>
-    
+    <h1 id="red" onclick="changeRed();">빨강색</h1>
+    <h1 id="orange" onclick="changeColor('orange');">주황색</h1>
+    <h1 id="gold" onclick="changeEle(this);">노랑색</h1>
+    <script>
+        function changeRed(){
+            document.getElementById('red').style.color = 'red';
+        }
+        function changeColor(colorCode){
+            document.getElementById(colorcode).style.color = colorCode;
+        }
+        function changeEle(ele){
+            ele.style.color = ele.id;
+        }
+    </script>
+    <h1>매개변수</h1>
+    <input type="button" value="기본" onclick="printFruit('수박',35000);">
+    <br>
+    <input type="button" value="순서 뒤집기" onclick="printFruit(15000,'딸기');">
+    <br>
+    <input type="button" value="작은" onclick="printFruit('참외');">
+    <br>
+    <input type="button" value="많은" onclick="printFruit('수박',19999,'초특가');">
+    <script>
+        function printFruit(name='수박',price=30000){
+            if(typeof(name) == 'string' && typeof(price) == 'number'){
+                console.log(`과일 이름 : ${name}`);
+                console.log(`과일 가격 : ${price}`);
+            }else{
+                console.log('매개변수의 순서,개수,자료형을 지키세요.')
+            }
+        }
+    </script>
 </body>
 </html>

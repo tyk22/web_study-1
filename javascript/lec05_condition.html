@@ -139,20 +139,21 @@
     <h2>면도기 공장</h2>
     <label for="num">생산 개수 : </label>
     <input type="number" id="num">
-    <img src="../resources/knife.png">
     <input type="button" value="생산" onclick="system();">
     <div id="result_div"></div>
     <script>
         function system(){
+            document.getElementById('result_div').innerHTML = '';
             let su = Number(document.getElementById('num').value);
             for(let i = 0; i < su; i++){
                 console.log('쉐이빙폼');
-
+                document.getElementById('result_div').innerHTML += '<img src="../resources/shaving.png" width="50">';
                 for(let j = 0; j < 2; j++){
                     console.log('면도기');
-                    // break;
+                    document.getElementById('result_div').innerHTML += '<img src="../resources/knife.png" width="50">'+'<br>';
+                    break;
                 }
-                break;
+                // break;
             }
         }
     </script>
@@ -206,13 +207,6 @@
             }
         }
     </script>
-
-
-
-
-    
-
-
 
     <br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br>

@@ -38,5 +38,38 @@
             }
         }
     </script>
+    <h1>함수 연습</h1>
+    <h2>키오스크</h2>
+    <h3>창립 기념일 행사로 전상품 5%할인 됩니다</h3><br>
+    <label for="disbefore">할인전 : </label>
+    <input type="number" id="disbefore" value="9400" readonly><br>
+    
+    <input type="radio" name="discount" id="five" onclick="calcPrice();">
+    <label for="five">기본할인(5%)</label><br>
+    <input type="radio" name="discount" id="ten" onclick="calcPrice(10);">
+    <label for="ten">통신사(10%)</label><br>
+    
+    <label for="pay">결제액 : </label>
+    <input type="number" id="pay">
+    
+    <script>
+        function calcPrice(percent = 5){
+            // 1. 할인전 가격 가져오기
+            let disCnt = Number(document.getElementById('disbefore').value);
+            // 2. 매개변수 percent를 기준으로 결제액 계산하기
+            // percent 5 이면 disCnt * 95% -> 9400 * (1-5/100)
+            // percent 10이면 disCnt * 90% -> 9400 * (1-10/100)
+            let result = disCnt * (1-percent/100);
+            // 3. 마지막 input의 값을 결제액으로 바꾸기
+            // console.log(percent * 2);
+            document.getElementById('pay').value = result;
+        }
+    </script>
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>

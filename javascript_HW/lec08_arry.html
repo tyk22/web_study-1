@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>2. watermelon</h1>
+    <fieldset>
+        <legend>보기</legend>
+        <label id="back">n o l e m</label><br>
+        <label id="front">r e t a w</label>
+    </fieldset>
+    <input type="text" id="printSen"><br>
+    <button onclick="fruit();">처리</button>
+    <script>
+        let fruit = function(){
+            let a = document.getElementById('back').innerText;
+            let b = document.getElementById('front').innerText;
+            let str1 = a.split(" ");
+            let str2 = b.split(" ");
+            let result = str1.concat(str2);
+            result.reverse();
+            // console.log(result);
+            let finalResult =  result.join('');
+            document.getElementById('printSen').value = finalResult;
+        }
+    </script>
+
+    <h1>3. 개구리,바나나,복숭아</h1>
+    <fieldset>
+        <legend>입력</legend>
+        <input type="text" id="sentence">
+        <button onclick="addMemo();">입력</button>
+    </fieldset>
+    <ol id="list">
+        <li></li>
+    </ol>
+    <button onclick="showMemo();">출력</button>
+    <script>
+        let memoArr = new Array();
+        let addMemo = function(){
+            let addList = document.getElementById('sentence').value;
+            memoArr.push(addList);
+            // console.log(addList);
+        }
+        let showMemo = function(){
+            let showList = document.getElementById('memoArr').value;
+            for(let i = 0; i < memoArr.length; i++){
+                
+            }
+        }
+        
+    </script>
+</body>
+</html>

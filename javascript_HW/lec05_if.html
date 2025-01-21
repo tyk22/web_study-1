@@ -21,10 +21,35 @@
     <input type="button" value="확인" onclick="weather();">
     <script>
         function weather(){
-            alert();
+            // alert('날씨');
+            let a = Number(document.getElementById('temp').value);
+            if(a >35){
+                alert('폭염 경보');
+            }else if(a >33){
+                alert('폭염 주의보');
+            }
+        }
+    </script>
+    <h1>스폰지밥,뚱이,징징이</h1>
+    <style>
+        #round{
+            border: 1px solid lightgreen;
+            width: 100px; height: 100px;
+        }
+    </style>
+    <select onchange="charactor();">
+        <option>스폰지밥</option>
+        <option>뚱이</option>
+        <option>징징이</option>
+    </select>
+    <div id="round"></div>
+    <script>
+        let charactor = function(){
+            document.getElementById('round') = '<img src="../resources/sponge.png">';
         }
 
     </script>
+
 
 
 </body>

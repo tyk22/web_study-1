@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>선언</h1>
+    <button onclick="createArray();">결과 확인</button>
+    <script>
+        const createArray = function(){
+            // 1. 리터럴 방식
+            let arr1 = [];
+            let arr2 = ['해','달','별'];
+
+
+            console.log(arr1);
+            console.log(arr2);
+            console.log(typeof(arr2));
+            console.log(Array.isArray(arr2));  // 배열 확인하는 함수
+
+            // 2. 생성자 방식
+            let arr3 = new Arry();
+            let arr4 = new Array(4);
+            let arr5 = new Array('해','달','별');
+        }
+    </script>
+    <h1>값 대입</h1>
+    <button onclick="setVal();">대입 연습</button>
+    <button onclick="getVal();">호출</button>
+    <script>
+        let globalArr = new Array();
+        let setVal = function(){
+            globalArr[0] = 100;
+            globalArr[1] = '김철수';
+            globalArr[2] = true;
+            globalArr[3] = function(){
+                                    alert('배열안!');
+                            };
+
+            globalArr[5] = 'test';
+
+            // for(let i = 0; i < 5; i++){
+            //     globalArr[i] = i*2;
+            // }
+        }
+        let getVal = function(){
+            // console.log(globalArr[3]);
+            globalArr[3]();
+            // for(let i =0; i <globalArr.length; i++){
+            //     console.log(globalArr[i]);
+            // }
+
+        }
+    </script>
+    <h1>split</h1>
+    <!-- span,p,label은 value값이 없음 / innerHTML 이나 innerText를 사용해야함함 -->
+    <span>tom,jason,maria,my</span>  
+    <button onclick="changeStrToArr();">2번째 데이터 가져오기</button>
+    <script>
+        let changeStrToArr = function(){
+            let str = document.getElementsByTagName('span')[0].innerText;
+            let arr = str.split(',');
+            if(arr.includes('jason')){
+                let idx = arr.indexOf('jason');
+                console.log(arr[idx]);
+            }
+
+            // console.log(arr[1]);
+            // console.log(str);
+
+            // if(arr.includes('java')){
+            //     console.log('Hello World');
+            // }
+            // if(arr.indexOf('java') != -1){
+            //     console.log('Hello World');
+            // }
+        }
+    </script>
+    <h1>사과 찾기 연습</h1>
+    <label id="la1">사과, 바나나, 당근</label>
+    <label id="la2">김밥, 치즈, 떡볶이, 햄버거</label>
+    <button onclick="searchArr();">버튼</button>
+    <script>
+        let searchArr = function(){
+            let fruit = document.getElementById('la1').innerText;
+            let food = document.getElementById('la2').innerText;
+            let line = fruit.split(', ');
+            let line2 = food.split(', ');
+            let result = line.concat(line2);
+            // console.log(result);
+            
+            let word ='치즈'
+            let idx = result.indexOf(word);
+            alert(`${word}의 인덱스 : ${idx}`);
+        }
+    </script>
+    <h1>배열 합치기</h1>
+    <button onclick="concatArr();">연습</button>
+    <script>
+        let concatArr = function(){
+            let student1 = ['tom','maria'];
+            let student2 = ['amy','john'];
+            let result = student1.concat(student1,student2);
+            console.log(result);
+        }
+    </script>
+    <h1>배열 -> 문자열</h1>
+    <button onclick="arrToStr();">연습</button>
+    <script>
+        let arrToStr = function(){
+            let food = ['떡볶이','튀김','순대'];
+            let result = food.join('+');
+            console.log(result);
+        }
+    </script>
+    <h1>배열 뒤집기</h1>
+    <button onclick="otherWay();">반대로</button>
+    <script>
+        let otherWay = function(){
+            let alpha = ['a','b','c','d'];
+            alpha.reverse();
+            console.log(alpha);
+        }
+    </script>
+    <h1 onclick="dataChange();">push,pop</h1>
+    <script>
+        let dataChange = function(){
+            let names = ['철수','영희'];
+            names.push('길동');
+            names.unshift('지은');
+            console.log(names);
+            names.pop();
+            names.shift();
+            console.log(names);
+        }
+    </script>
+    <h1>기록하기</h1>
+    <input type="text" id="sentence">
+    <button onclick="addMemo();">입력</button>
+    <button onclick="showMemo();">출력</button>
+    <ul id="memoList">
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        let memoArr = new Array(); 
+        let addMemo = function(){
+            // input에 입력한 문자 정보 받아오기
+            let listData = document.getElementById('sentence').value;
+            // memoArr 배열에 요소로 추가하기
+            memoArr.push(listData);
+            console.log(listData);
+        }
+        let showMemo = function(){
+            // memoArr 배열에 기록된 모든 정보 를 순서가 없는 목록 형태로 출력
+            // document.getElementById('memoList').innerHTML = memoArr;
+            
+            for(let i = 0; i <memoArr.length; i++){
+                document.getElementById('memoList').innerHTML = memoArr;
+                // console.log(showMemo);
+            }
+        }
+    </script>
+    <h1>향상된 for문</h1>
+    <button onclick="testFor();">연습</button>
+    <script>
+        const testFor = function(){
+            let nums = [5,6,7,8];
+            // 익명함수 사용한 경우
+            nums.forEach(function(element,index){
+                console.log(`(1) ${index}는 ${element}`);
+            });
+            // 화살표 함수 사용한 경우(화살표 함수 매개변수가 두개면 안에 괄호 넣어야함함)
+            nums.forEach((ele,idx)=>{
+                console.log(`(2) ${idx}는 ${ele}`);
+            });
+            // 화살표 함수 매개변수가 하나면 안에 괄호 없어도됨
+            nums.forEach(val =>{
+                console.log(val);
+            });
+        }
+    </script>
+    <h1>배열 정렬</h1>
+    <button onclick="ascendArr();">오름차순</button>
+    <button onclick="descendArr();">내림차순</button>
+    <ol id="sort_ol">
+    </ol>
+    <script>
+        let numArr = [3,5,1,8,9,10];
+        let ascendArr = function(){
+            // numArr.sort(function(x,y){
+            //     if(x < y) return -1;
+            //     else if(x > y) return 1;
+            //     else return 0;
+            // });
+            numArr.sort((left,right)=>{
+                return left-right;
+            });
+            numArr.forEach(function(ele){
+                document.getElementById('sort_ol').innerHTML
+                    += `<li>${ele}</li>`;
+            });
+        }
+        let descendArr = function(){
+            // numArr.sort();
+            // numArr.reverse();
+            numArr.sort(function(a,b){
+                if(a < b) return 1;
+                else if(a > b) return -1;
+                else return 0;
+            });
+            // numArr.sort(function(left,right)=>{
+            //     return right-left;
+            // });
+            numArr.forEach(function(ele){
+                document.getElementById('sort_ol').innerHTML
+                += `<li>${ele}</li>`;
+            });
+        }
+    </script>
+    <h1>연습문제</h1>
+    <label></label>
+    <button onclick="upArr();">오름차순</button>
+    <button onclick="downArr();">내림차순</button>
+    <ol id="list_ol"></ol>
+    <script>
+        let leadersName = ['홍식','윤아','성관'];
+        let upArr = function(){
+            leadersName.sort(function(x,y){
+                if(x < y) return -1;
+                else if(x > y) return 1;
+                else return 0;
+            });
+            leadersName.forEach(function(ell){
+                document.getElementById('list_ol').innerHTML += `<li>${ell}</li>`;
+            });
+        }
+        let downArr = function(){
+            leadersName.sort(function(a,b){
+                if(a < b) return 1;
+                else if(a > b) return -1;
+                else return 0;
+            });
+            leadersName.forEach(function(ell){
+                document.getElementById('list_ol').innerHTML += `<li>${ell}</li>`;
+            });
+        }
+    </script>
+
+
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

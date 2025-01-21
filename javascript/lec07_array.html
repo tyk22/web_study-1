@@ -141,9 +141,7 @@
     <button onclick="addMemo();">입력</button>
     <button onclick="showMemo();">출력</button>
     <ul id="memoList">
-        <li></li>
-        <li></li>
-        <li></li>
+        
     </ul>
     <script>
         let memoArr = new Array(); 
@@ -159,7 +157,7 @@
             // document.getElementById('memoList').innerHTML = memoArr;
             
             for(let i = 0; i <memoArr.length; i++){
-                document.getElementById('memoList').innerHTML = memoArr;
+                document.getElementById('memoList').innerHTML += '<li>'+memoArr[i]+'</li>';
                 // console.log(showMemo);
             }
         }

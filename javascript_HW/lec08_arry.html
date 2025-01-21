@@ -6,6 +6,20 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>1. 성적 평균 계산기</h1>
+    <h3>우리반 성적</h3>
+    <label>평균 : </label><br>
+    <label for="score">성적</label>
+    <input type="number" id="score">
+    <button>추가</button>
+    <script>
+        //성적 정보를 입력하고 추가 버튼을 누르면 배열에 요소가 추가됩니다.
+        //배열에 추가된 요소들의 평균을 계산하여 상단 평균에 반영합니다.
+        //평균계산 : 모든 수를 더하고 수의 개수로 나눠기
+
+
+    </script>
+
     <h1>2. watermelon</h1>
     <fieldset>
         <legend>보기</legend>
@@ -34,9 +48,8 @@
         <input type="text" id="sentence">
         <button onclick="addMemo();">입력</button>
     </fieldset>
-    <ol id="list">
-        <li></li>
-    </ol>
+    <ul id="showList">
+    </ul>
     <button onclick="showMemo();">출력</button>
     <script>
         let memoArr = new Array();
@@ -46,12 +59,36 @@
             // console.log(addList);
         }
         let showMemo = function(){
-            let showList = document.getElementById('memoArr').value;
+            // let showList = document.getElementById('memoArr').value;
             for(let i = 0; i < memoArr.length; i++){
-                
+                document.getElementById('showList').innerHTML += '<li>'+memoArr[i]+'</li>';
             }
         }
-        
     </script>
+
+    <h1>4. 당근 시렁</h1>
+    <fieldset>
+        <legend>보기</legend>
+        <label id="menu">피자 치킨 당근 햄버거 떡볶이</label>
+    </fieldset>
+    <input type="text" id="deleteName" placeholder="삭제할 음식이름을 입력하세요">
+    <input type="text" id="addName" placeholder="추가할 음식이름을 입력하세요">
+    <input type="text">
+    <button>처리 및 출력</button>
+    <script>
+        let listArr = new Array();
+        let deleteFood = function(){
+            let menuArr = document.getElementById('menu').innerText;
+            menuArr.split(" ");
+            console.log(menuArr);
+            let minus = document.getElementById('deleteName').value;
+            menuArr.pop(minus);
+            
+        }
+        let addFood = function(){
+
+        }
+    </script>
+
 </body>
 </html>

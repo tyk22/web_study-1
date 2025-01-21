@@ -14,7 +14,6 @@
             let arr1 = [];
             let arr2 = ['해','달','별'];
 
-
             console.log(arr1);
             console.log(arr2);
             console.log(typeof(arr2));
@@ -38,9 +37,7 @@
             globalArr[3] = function(){
                                     alert('배열안!');
                             };
-
             globalArr[5] = 'test';
-
             // for(let i = 0; i < 5; i++){
             //     globalArr[i] = i*2;
             // }
@@ -51,7 +48,6 @@
             // for(let i =0; i <globalArr.length; i++){
             //     console.log(globalArr[i]);
             // }
-
         }
     </script>
     <h1>split</h1>
@@ -141,9 +137,6 @@
     <button onclick="addMemo();">입력</button>
     <button onclick="showMemo();">출력</button>
     <ul id="memoList">
-        <li></li>
-        <li></li>
-        <li></li>
     </ul>
     <script>
         let memoArr = new Array(); 
@@ -152,15 +145,11 @@
             let listData = document.getElementById('sentence').value;
             // memoArr 배열에 요소로 추가하기
             memoArr.push(listData);
-            console.log(listData);
         }
         let showMemo = function(){
             // memoArr 배열에 기록된 모든 정보 를 순서가 없는 목록 형태로 출력
-            // document.getElementById('memoList').innerHTML = memoArr;
-            
             for(let i = 0; i <memoArr.length; i++){
-                document.getElementById('memoList').innerHTML = memoArr;
-                // console.log(showMemo);
+                document.getElementById('memoList').innerHTML += '<li>'+memoArr[i]+'</li>';
             }
         }
     </script>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>객체 생성</h1>
+    <button onclick="makeObj1();">리터럴</button>
+    <script>
+        let makeObj1 = function(){
+            let person = {};
+            person['name'] = '홍길동';
+            person['age'] = 50;
+            console.log(person);
+
+            let student = {
+                name : '김철수',
+                age : 20,
+                hobby : ['독서','영화'],  //배열형식으로 씀
+                toString : function(){  //함수형식으로 씀
+                    return this.name+'은(는) '+this.age+'입니다.'; //
+                },
+                item:{
+                    name:'샤프',
+                    price:20000
+                }
+            };
+            console.log(student);
+        }
+    </script>
+    <button onclick="createObj();">생성자(new연산자)</button>
+    <script>
+        let createObj = function(){
+            let member = new Object();
+            member['phone'] = '0102223333';
+            console.log(member);
+        }
+    </script>
+    <h1 onclick="testObj();">생성자 함수</h1>
+    <script>
+        let testObj = () => {
+            let student = Student('이영희',1);  //아래 함수인 Student를 불러서 사용한거임임
+            console.log(student);
+        }
+
+        let Student = function(name1,grade2){
+            return {
+                name : name1,
+                grade : grade2
+            };
+        }
+    </script>
+    <h1>생성자 함수 연습</h1>
+    <label for="carBrand">브랜드 : </label>
+    <input type="text" id="carBrand"><br>
+    <label for="carModel">모델명 : </label>
+    <input type="text" id="carModel"><br>
+    <label for="carYear">제조 연도 : </label>
+    <input type="text" id="carYear"><br>
+    <button onclick="car();">만들기</button>
+    <script>
+        let car = () => {
+            let brandTyping = document.getElementById('carBrand').value;
+            let modelTyping = document.getElementById('carModel').value;
+            let carYear = document.getElementById('carYear').value;
+            let makeCar = make2(brandTyping,modelTyping,carYear);
+            console.log(makeCar);
+        }
+        let make2 = function(brand,model,year){
+            return {
+                brand : brand,
+                model : model,
+                year : year
+            }
+        }
+    </script>
+    <h1>객체 속성 추가 및 삭제</h1>
+    <button onclick="addProp();">추가</button>
+    <button onclick="removeProp();">삭제</button>
+    <script>
+        let sampleObj = {};
+        // 
+        let addProp = () => {
+            sampleObj['f'+'u'+'n'] = function(){
+                console.log('확인');
+            }
+            sampleObj.num = 100;
+            console.log(sampleObj);
+        }
+        let removeProp = () =>{
+            delete(sampleObj['num']);
+            delete(sampleObj.fun);
+            console.log(sampleObj);
+        }
+    </script>
+    <h1>객체 호출</h1>
+    <button onclick="makePerson();">생성</button>
+    <script>
+        let makePerson = function(){
+            let p = setPerson('수철',
+                            true,
+                            ['수영','골프'],
+                            {name:'만년필',price:100}
+                        ); 
+            // 1. 리터럴럴
+            let val1 = p.name;  //꺼내오기
+            let val2 = p['name'];  //꺼내오기
+            
+            let word = 'Student';
+            let val3 = p['is'+word];
+            
+            console.log(val1,val2,val3);
+
+            // 2.배열
+            let arr = p['hobby'];
+            let arr2 = p.hobby;
+
+            let val4 = p['hobby'][0];
+                val4 = p.hobby[1];   // 재할당
+                val4 = arr[0];
+
+            let str = p.hobby.join('+'); // 이런것도 할 수 있음
+
+            p['hobby'].forEach(function(ele){  // 이것도 할 수 있음
+                console.log(`${ele} 접근`);
+            });
+
+            // 3. 객체
+            let val5 = p['item']['name'];
+                val5 = p['item'].name;
+
+            let val6 = p.item['price'];
+                val6 = p.item.price;
+
+            console.log(val5,val6);
+
+            // 4. 함수
+            console.log(p.callName());
+            console.log(p['callName']());
+
+            p.testFunc();
+            p['testFunc']();
+
+            // 5. for in문
+            for(key in p){
+                console.log(key);
+                let valu = p[key];
+            }
+
+        }
+        let setPerson = function(name,bool,arr,item){
+            // 객체를 만들어서 반환하는 방법
+            let obj = {
+                name : name,
+                isStudent : bool,
+                hobby : arr,
+                item : item,
+                callName : function(){
+                    return '나의 이름은'+this.name;
+                },
+                testFunc : function(){
+                    if(this.isStudent){
+                        console.log(`학생 ${this.name}`);
+                    }else{
+                        console.log(`${this.name}님`);
+                    }
+                }
+            };
+            return obj;
+        }
+    </script>
+    <h1>연습 문제</h1>
+    <fieldset>
+        <legend>출력</legend>
+        <label for="menuName">메뉴명 : </label>
+        <input type="text" id="menuName" value="menuName"><br>
+        <label for="price">가격 : </label>
+        <input type="price" id="price" value="price">
+    </fieldset>
+    <!-- <ol id="list_ol"></ol> -->
+    <button onclick="insertBr();">입력</button>
+    <button onclick="printBr();">출력</button>
+    <script>
+        let insertBr = function(){
+            let menuName = document.getElementById('menuName').value;
+            let price = document.getElementById('price').value;
+
+            let br = printBr({name:menuName,price:price}); 
+            let br1 = br['name']['price'];
+
+            let inputText1 = prompt('메뉴명','메뉴명을 입력해주세요');
+            let inputText2 = prompt('가격','가격을 입력해주세요');
+            document.getElementById('menuName').value = inputText1;
+            document.getElementById('price').value = inputText2;
+            
+            alert(inputText1,inputText2);
+        }
+        let printBr = function(name,price){
+            let BrObj = {
+                name : name,
+                price : price
+                
+                // if(BrObj == null){
+                    
+                // }
+            }
+            return BrObj;
+        }
+    </script>
+
+    <button onclick="thisFunc();">this Test</button>
+    <script>
+        const thisFunc = function(){
+            account('철수').printName();
+        }
+        const account =function(name){
+            return {name : name,
+                    printName : function(){
+                    console.log(this.name);
+                    }
+                }
+        }
+    </script>
+    <button onclick="showThis(this);">화살표 this</button>
+    <script>
+        let showThis = (element) => {
+            console.log(element);
+        }
+    </script>
+    <h1>객체 배열</h1>
+    <script>
+        let customers = [     //배열
+            {
+                name : '영희',
+                age : 24
+            }
+        ];
+        console.log(customers); 
+        console.log(customers[0]['name']);   // 객체 배열에 접근
+        console.log(customers[0].name);
+
+        customers.push({name:'철수',gender:'M'});   // 배열안에 객체 넣기기
+        customers.unshift({name:'길동',age:51});
+
+        customers.pop();
+        customers.shift();
+
+    </script>
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

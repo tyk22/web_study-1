@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>1. 출석부</h1>
+    <fieldset>
+        <legend>강아지 정보</legend>
+        <label for="name">이름</label>
+        <input type="text" id="name"><br>
+        <label for="age">나이</label>
+        <input type="number" id="age"><br>
+        <label for="feture">특징</label>
+        <input type="text" id="feture"><br>
+    </fieldset>
+    <button onclick="friendArr();">등록</button>
+    <button>확인</button>
+    <table border="1">
+        <tr>
+            <th>이름</th>
+            <th>나이</th>
+            <th>특징</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <script>
+        let friendArr = new Object();
+        let setFriend = function(){
+            let name = document.getElementById('name').value;
+            let age = document.getElementById('age').value;
+            let personality = document.getElementById('feture').value;
+            friendArr.push('name');
+
+            
+        }
+    </script>
+</body>
+</html>

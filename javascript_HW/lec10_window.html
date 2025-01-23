@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <h1>전자시계</h1>           // onload 사용해서 풀기 -->
+    <button onclick="clock();">새로운 창</button>
+    <script>
+        let clockTime;
+        let clock = function(){
+            clockTime = open('','_blank','width=500,height=500');
+            clockTime.document.write(`let today = new Date();
+                                    let year = today.getFullYear();
+                                    let mon = today.getMonth()+1;
+                                    let day = today.getDay();
+                                    let hours = today.getHours();
+                                    let minutes = today.getMinutes();
+                                    let seconds = today.getSeconds();
+                                    <div>${hours} : ${minutes} : ${seconds}</div>`);
+            // `${hours} : ${minutes} : ${seconds}`;
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

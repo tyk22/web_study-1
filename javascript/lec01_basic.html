@@ -72,12 +72,24 @@
         }
     </script>
     <h1>연습</h1>
-    <button type="button" onclick="printDate();">
-        오늘날짜
-    </button>
+    <input onclick="todayDate();" type="button" value="날짜 출력">
     <script>
-        function printDate(){
-            alert('yyyy-mm-dd');
+        function todayDate(){
+            // alert('yyyy-mm-dd');
+            let today = new Date();
+            let year = today.getFullYear();
+            let mon = today.getMonth()+1;
+            let date = today.getDate();
+            let day = today.getDay();
+            switch(day){
+                case 0 : day = '일';break;
+                case 1 : day = '월';break;
+                case 2 : day = '화';break;
+                case 3 : day = '수';break;
+                case 4 : day = '목';break;
+            }
+            alert(`${year}년 ${mon}월 ${date}일 ${day}요일`);
+
         }
     </script>
     <h2>프롬프트</h2>
@@ -118,9 +130,9 @@
     </script>
     <h1>연습문제</h1>
     <input type="button" value="일요일"
-    onclick="todayDate();">
+    onclick="todayD();">
     <script>
-        function todayDate(){
+        function todayD(){
             // if(confirm('오늘은 일요일인가요?'))
             var flag = confirm('오늘은 일요일인가요?')
             console.log(flag);

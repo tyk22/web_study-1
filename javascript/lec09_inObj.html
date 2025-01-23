@@ -25,7 +25,7 @@
             }
         }
     </script>
-    <h1>댓글 입력창</h1>
+    <h1 id="target">댓글 입력창</h1>
     <textarea id="comment" maxlength="100" onkeyup="getLength(this);"></textarea>
     <span id="count">0</span>
     <span>/100</span>
@@ -164,8 +164,17 @@
             Math.floor(Math.random()*(5-1+1)) +1
         }
     </script>
+    <button onclick="scrollTest();">스크롤 이동</button>
+    <script>
+        const scrollTest = function(){
+            // scrollTo(0,10);
 
+            let point = document.getElementById('target').offsetTop;
+            // scrollTo(0,point);
+            scrollTo({left:0,top:point,behavior:'smooth'});
 
+        }
+    </script>
 
 
 

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>이벤트 설정 방식</h1>
+    <h2>1. 인라인 방식</h2>
+    <button onclick="inlineTest(this);">this테스트</button>
+    <button onclick="inlineFunc(event);">event 테스트</button>
+    <script>
+        // 인라인에서 this사용시 함수호출문(this)에 매개변수로 반드시 this라고 적고
+        // 함수 선언부 매개변수명(element)은 원하는것 적기
+        const inlineTest = function(element){
+            console.log(element);
+        }
+        // 인라인에서 event를 사용한다면 함수 호출문에 event라고 쓰고 함수 선언부는 원하는 명칭 넣기기
+        // 함수 호출문 : event
+        // 함수 선언부 : 원하는 명칭
+        const inlineFunc = function(e){
+            console.log(e.target);
+            console.log(this); //함수 선언부에 this를 넣으면 window가 나옴
+        }
+    </script>
+    <h2>2. 고전 방식</h2> 
+    <p id="oldTag">고전 방식 테스트</p>
+    <script>
+        // 고전 방식에서 this를 사용하면 선언부 사용 불가능하고 함수 내부에 호출 가능
+        // 익명함수의 매개변수는 어떤 변수명이든 무조건 event객체가 오도록 되어 있음음
+        // 고전 방식은 여러 이벤트 핸들러가 있으면 마지막만 동작한다.
+        document.getElementById('oldTag').onclick = function(e){
+            console.log(this);
+            console.log(e.target);
+        }
+    </script>
+    <h2>3. 표준 방식</h2>
+    <p id="standTag">표준방식 테스트</p>
+    <script>
+        // 익명함수의 매개변수가 어떤 변수명이든 무조건 event객체가 넘어온다.
+        document.getElementById('standTag').addEventListener('click',function(e){
+            console.log(e.target);
+            console.log(this);
+        });
+        // 표준방식에서는 여러 이벤트 핸들러가 있을때 모든 핸들러가 동작한다.
+        document.getElementById('standTag').addEventListener('click',function(e){
+            console.log('이게 되나?');
+        });
+    </script>
+    <h1>연습</h1>
+    <label for="inputText">입력</label>
+    <input type="text" id="inputText"><br>
+    <!-- <div id="test_div">
+    </div> -->
+    <button onclick="inlineBnt();">인라인</button>
+    <button onclick="oldBnt();" id="oldClick">고전</button>
+    <button onclick="standBnt();" id="standClick">표준</button>
+    <script>
+        const inlineBnt = function(){
+            document.getElementById('inputText').value = '인라인이 클릭되었습니다!';
+        }
+        document.getElementById('oldClick').onclick = function(){
+            document.getElementById('inputText').value = '고전이 클릭되었습니다!';
+        }
+        document.getElementById('standClick').addEventListener('click',function(){
+            document.getElementById('inputText').value = '표준이 클릭되었습니다!';
+        })
+    </script>
+    <h1>마우스 이벤트</h1>
+    <style>
+        #mouse_test{
+            border: green 1px solid;
+            width: 200px; height: 200px;
+        }    
+    </style>
+    <div id="mouse_test">
+        타겟
+    </div>
+    <script>
+        // 더블클릭 했을때 배경생을 gold색으로 변경하는 방법
+        document.getElementById('mouse_test').addEventListener('dblclick',function(){
+            this.style.backgroundColor = 'gold';
+        });
+        // 
+        // 마우스가 박스 안쪽으로 들어가면 아래 문자열이 입력됨
+        document.getElementById('mouse_test').addEventListener('mouseenter',function(e){
+            e.target.innerHTML += '들어갔다!!';
+        });
+        // 마우스가 박스 바깥으로 나가면 아래 문자열이 입력됨
+        document.getElementById('mouse_test').addEventListener('mouseleave',function(){
+            this.innerHTML += '나가는중~~';
+        });
+    </script>
+    <h1>키 이벤트</h1>
+    <textarea id="keyTag"></textarea>
+    <script>
+        // keydown은 모든 키가 다 됨 -> backspace, esc등등등
+        document.getElementById('keyTag').addEventListener('keydown',function(e){
+            console.log(e.key);
+            console.log(e.code);
+            if(e.code == 'KeyS'){
+                let img = document.createElement('img');
+                    img.setAttribute('src','../resources/sponge.png');
+                    img.setAttribute('width','50');
+                e.target.insertAdjacentElement('afterend',img);
+            }
+        });
+        // keypress는 입력가능한 키만 됨
+        document.getElementById('keyTag').addEventListener('keypress',function(e){
+            if(e.code == 'KeyD'){
+                let img = document.createElement('img');
+                    img.setAttribute('src','../resources/dung.png');
+                    img.setAttribute('width','50');
+                e.target.insertAdjacentElement('beforebegin',img);
+            }
+        });
+        // 모든 키를 사용가능하지만 손을 땠을때 동작함
+        document.getElementById('keyTag').addEventListener('keyup',function(e){
+            if(event.key == 'CapsLock'){
+                alert('대문자 쓰면 로그인 안될껄요?');
+            }
+        });
+    </script>
+    키보드에 이벤트를 걸어야함
+
+    <label for="searchText">검색어</label>
+    <input type="text" id="searchText">
+    <input type="button" value="검색" onclick="searchPerson();" id="enterP">
+    <script>
+    let persons = [
+        {name:'김철수',age:17},
+        {name:'이영희',age:23},
+        {name:'홍길동',age:35}
+    ];
+    let searchPerson = function(){
+        let searchText = document.getElementById('searchText').value;
+        let resultText = '존재하지 않는 회원입니다.';
+        for(let i = 0 ; i < persons.length ; i++){
+            if(persons[i]['name'] == searchText){
+                resultText = `${persons[i].name}님은 ${persons[i].age}살 입니다.`;
+                break;
+            }
+        }
+        alert(resultText);
+    }
+    document.getElementById('searchText').addEventListener('keyup',function(){
+        if(event.code == 'Enter'){
+            searchPerson();     //함수를 호출해 오는 방법
+        }
+    });
+</script>
+    <h1>form 이벤트</h1>
+    <form>
+        <input type="text" id="input1">
+        <input type="password" id="input2">
+    </form>
+    <script>
+        document.querySelector('#input1').addEventListener('focus',function(e){
+            e.target.style.backgroundColor = 'gold';
+        });
+        document.querySelector('#input1').addEventListener('blur',function(e){
+            e.target.style.backgroundColor = 'white';
+        });
+    </script>
+    <h1>버블링 : 자식에서 부모로 가서 조상님으로 이벤트가 전달되는 현상</h1>
+    <style>
+        #ancestor{border: 2px solid orange;}
+        #parent{border : 4px dotted cadetblue;}
+        #child{border:4px double crimson}
+    </style>
+    <form id="ancestor">
+        조상님
+        <div id="parent">
+            부모님
+            <p id="child">자식</p>
+        </div>
+    </form>
+    <script>
+        document.getElementById('child').addEventListener('click',function(e){
+            e.stopPropagation();    //서로 영향을 미치는 걸 끊어줄때 사용용
+            alert('자식');
+        });
+        document.getElementById('parent').addEventListener('click',function(e){
+            e.stopPropagation();
+            alert('부모님');
+        });
+        document.getElementById('ancestor').addEventListener('click',function(e){
+            e.stopPropagation();
+            alert('조상님');
+        });
+    </script>
+    <a id="noClick" href="https://www.naver.com">테스트</a>
+    <script>
+        document.getElementById('noClick').addEventListener('click',function(e){
+            e.preventDefault();
+            alert('네이버로 안 가쟈~');
+        })
+    </script>
+    <form id="testFrm">
+        <input type="text" name="user_data">
+        <input type="submit" value="제출">
+    </form>
+    <script>
+        document.getElementById('testFrm').onsubmit = function(){
+            const val = document.querySelector('input[name=nuser_data]').value;
+            if(val.length < 4){
+                alert('데이터는 4글자 이상이여야 해요');
+                return false;
+            }else{
+                return true;
+            }
+        }
+    </script>
+    <h1>연습문제</h1>
+    <h3>유효성 검사</h3>
+    <style>
+        .pw_vali{display: none;}
+        .pw_vali.pass{display:inline;color: green;}
+        .pw_vali.fail{display: inline;color: red;}
+    </style>   
+    <form id="joinForm">
+        <input type="password" placeholder="비밀번호" name="user_pw"><br>
+        <input type="password" placeholder="비밀번호 확인" name="user_pw_check"><br>
+        <span class="pw_vali"></span>
+    </form>
+    <script>
+        document.getElementsByName('user_pw_check')[0].addEventListener('blur',function(event){
+            let pwNumber = document.getElementsByName('user_pw')[0].value;
+            let PwCheck = document.getElementsByName('user_pw_check')[0].value;
+
+            if(pwNumber == PwCheck){
+                document.getElementsByClassName('pw_vali')[0].innerHTML = '비밀번호가 일치합니다.';
+                document.getElementsByClassName('pw_vali')[0].classList.add('pass');
+                document.getElementsByClassName('pw_vali')[0].classList.remove('fail');
+            }else{
+                document.getElementsByClassName('pw_vali')[0].innerHTML = '비밀번호가 일치하지 않습니다.';
+                document.getElementsByClassName('pw_vali')[0].classList.add('fail');
+                document.getElementsByClassName('pw_vali')[0].classList.remove('pass');
+            }
+        });
+    </script>
+
+
+
+</body>
+</html>

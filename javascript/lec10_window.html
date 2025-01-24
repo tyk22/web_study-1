@@ -267,7 +267,7 @@
             div.insertAdjacentElement('afterend',h2);    
         }
     </script>
-    <h1>슬랙 연습문제 </h1>
+    <!-- <h1>슬랙 연습문제 </h1> ***************************** -->
     <h2>메뉴 추가</h2>
     <ul id="test_list">
         <li>짜장면</li>
@@ -292,6 +292,93 @@
 
         }
     </script>
+    <h1>class 속성 추가 및 삭제</h1>
+    <style>
+        .colorful{
+            border:3px double deepskyblue;
+            background-color: aliceblue;
+        }
+    </style>
+    <p id="standard">기준 p태그</p>
+    <button onclick="addClassTest();">colorful 클래스 추가</button><br>
+    <button onclick="removeClassTest();">colorful 클래스 삭제</button>
+    <script>
+        const addClassTest = function(){
+            document.getElementById('standard').classList.add('colorful');
+        }
+        const removeClassTest = function(){
+            document.getElementById('standard').classList.remove('colorful');
+        }
+    </script>
+    <h1 id="hightlightTest">hightlight</h1>
+    <style>
+        .color{
+            color:green;
+            background-color: gold;
+        }
+    </style>
+    <button onclick="addColor();">추가</button>
+    <button onclick="removeColor();">삭제</button>
+    <script>
+        const addColor = function(){
+            document.getElementById('hightlightTest').classList.add('color');
+        }
+        const removeColor = function(){
+            document.getElementById('hightlightTest').classList.remove('color');
+        }
+    </script>
+    <h1>주변태그 접근하기</h1>
+    <div id="searchTag">
+        <h2>얘는 h2에요~</h2>
+        <ul>
+            <li>가</li>
+            <li>나</li>
+            <li>다</li>
+        </ul>
+        <button id="search_btn">주변 조회</button>
+        <button id="remove_btn">태그 제거</button>
+    </div>
+    <script>
+        let trueOrFalse = true;
+        document.getElementById('remove_btn').onclick = function(){
+            if(trueOrFalse == true){
+                let deleteElement = this.parentElement.children[1];
+                    // deleteElement = this.previousElementSibling.previousElementSibling;
+                deleteElement.remove();
+                trueOrFalse = false;
+            }
+        }
+
+        document.getElementById('search_btn').onclick = function(){
+            const tar = this;
+            const parent = tar.parentElement;   //parentElement 사용
+            console.log(tar,parent);
+            const children = parent.children;
+
+            const arr = this.parentElement.children;  // 한번에 쓰는 방법
+            
+            for(let i = 0; i <arr.length; i++){
+                console.log(i+" : "+arr[i].tagName);
+                if(arr[i].tagName == 'H2'){     //'' 문자열안에 대문자로 넣어야함
+                    arr[i].style.backgroundColor = 'gold';
+                }else if(arr[i].tagName == 'UL'){
+                    const li = arr[i].children;
+                    console.log(li);
+                }
+            }
+            const firstLi = this.parentElement.children[1].children[0];
+            console.log(firstLi);
+
+            const secondLi = firstLi.nextElementSibling;
+            console.log(secondLi);
+
+            const ulTarget = document.getElementById('searchTag').children[1].previousElementSibling;
+            console.log(ulTarget);
+        }
+    </script>
+
+
+
 
 
 

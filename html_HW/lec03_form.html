@@ -37,28 +37,197 @@
             </li>
             <li>
                 <label>기타사항</label>
-                <textarea cols="30" rows="3"></textarea>
+                <textarea cols="30" rows="3" style="resize: none;"></textarea>
             </li>
         </ul>
     </fieldset>
-    <input type="button" value="send message">
+    <input type="submit" value="send message">
     <h1>회원가입</h1>
     <form>
         <fieldset>
             <legend>필수 입력 사항</legend>
-            <strong>ID</strong>
-            <input type="text" placeholder="아이디 10글자 이내">
-            <input type="button" value="중복확인"><br>
-            <strong>비밀번호</strong>
-            <input type="text"><br>
-            <strong>비밀번호 확인</strong>
-            <input type="password"><br>
-            <strong>Email</strong>
-            <input type="email">
-            <select>
-                
-            </select>
+            <table>
+                <tr>
+                    <th>
+                        <label>ID</label>
+                    </th>
+                    <td>
+                        <input type="text" placeholder="아이디 10글자 이내">
+                    </td>
+                    <td>
+                        <input type="button" value="중복확인"><br>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label>비밀번호</label>
+                    </th>
+                    <td>
+                        <input type="text" placeholder="영문,숫자 포함 8자리 이상"><br>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label>비밀번호 확인</label>
+                    </th>
+                    <td>
+                        <input type="password"><br>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label>Email</label>
+                    </th>
+                    <td>
+                        <input type="email">
+                    </td>
+                    <td>
+                        <select>
+                            <option value="">직접입력</option>
+                            <option value="1">naver.com</option>
+                            <option value="2">gmail.com</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
         </fieldset>
+        <fieldset>
+            <legend>추가 정보</legend>
+            <div>
+                <label>프로필 사진 : </label>
+                <input type="file">
+            </div>
+            <br>
+            <div>
+                <span>성별 : </span>
+                <input type="radio" id="male" name="gender" value="1">
+                <label for="male">남자</label>
+                <input type="radio" id="female" name="gender" value="2">
+                <label for="female">여자</label>
+            </div>
+            <br>
+            <div>
+                <label>생년월일 : </label>
+                <input type="date">
+            </div>
+            <br>
+            <div>
+                <p>취미</p>
+                <input type="checkbox" name="hobby" id="baseball">
+                <label for="baseball">야구</label>
+                <input type="checkbox" name="hobby" id="basketball">
+                <label for="basketball">농구</label>
+                <input type="checkbox" name="hobby" id="soccer">
+                <label for="soccer">축구</label><br>
+                <input type="checkbox" name="hobby" id="study">
+                <label for="study">공부</label>
+                <input type="checkbox" name="hobby" id="music">
+                <label for="music">음악감상</label><br>
+                <input type="checkbox" name="hobby" id="etc">
+                <label for="etc">기타 : </label>
+                <input type="text">
+            </div>
+            <br>
+            <div>
+                <p>자기소개</p>
+                <textarea cols="50" rows="5" style="resize: none;"></textarea>
+            </div>
+        </fieldset>
+        <br>
+        <input type="submit" value="회원가입">
+        <input type="reset" value="다시입력">
+        <input type="button" value="이전으로">
     </form>
+    <h2>백엔드 개발자 지원서</h2>
+    <p>Java, Spring, DataBase에 대한 기술적 이해와 경험이 있는 분을 찾습니다.</p>
+    <hr>
+    <table>
+        <tbody>
+            <tr>
+                <th>개인정보</th>
+                <td></td>
+                <td></td>   
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <label for="dev_name">이름</label>
+                </td>
+                <td>
+                    <input type="text" name="dev_name" placeholder="공백없이 입력하세요.">
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <label for="dev_phone">연락처</label>
+                </td>
+                <td>
+                    <input type="text" id="dev_phone">
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <th>지원분야</th>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <input type="radio"  id="backend" name="dev_filed">
+                </td>
+                <td>
+                    <label for="backend">백엔드 개발</label>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <input type="radio" id="server_dev" name="dev_filed">
+                </td>
+                <td>
+                    <label for="server_dev">서버 개발</label>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <input type="radio" id="refactoring" name="dev_filed">
+                </td>
+                <td>
+                    <label for="refactoring">개발 환경 개선</label>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <th>지원동기</th>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <textarea cols="50" rows="5" placeholder="지원 동기를 간략히 써주세요" style="resize: none;"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <input type="submit" value="접수하기">
+                    <input type="reset" value="다시쓰기">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+<br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>

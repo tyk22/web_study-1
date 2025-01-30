@@ -123,24 +123,20 @@
     </script>
 
     <h1>함수 연습</h1>
-    <button onclick="console.log(cal1(a,b));">1</button>
-    <button onclick="console.log(cal2(a,b));">2</button>
-    <button onclick="console.log(cal3(a,b));">3</button>
+    <button onclick="console.log(cal1(11,41));">선언적 함수</button>
+    <button onclick="console.log(cal2(11,41));">익명 함수</button>
+    <button onclick="console.log(cal3(11,41));">화살표 함수</button>
     <script>
-        let a = 11;
-        let b = 41;
         function cal1(a,b){
             return a*b;
         }
-        let cal2 = function(){
+        let cal2 = function(a,b){
             return a*b;
         }
-        const cal3 =(a,b) => {
-            return a*b;
-        }
+        const cal3 =(a,b) => a*b;
     </script>
     <h1>익명 함수 활용</h1>
-    <button onclick="timerFunc();">1초 뒤에 동장</button>
+    <button onclick="timerFunc();">1초 뒤에 등장</button>
     <script>
         let timerFunc = function(){
             setTimeout(function(){

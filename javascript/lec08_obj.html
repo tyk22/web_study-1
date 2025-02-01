@@ -44,7 +44,6 @@
             let student = Student('이영희',1);  //아래 함수인 Student를 불러서 사용한거임임
             console.log(student);
         }
-
         let Student = function(name1,grade2){
             return {
                 name : name1,
@@ -104,7 +103,7 @@
                             ['수영','골프'],
                             {name:'만년필',price:100}
                         ); 
-            // 1. 리터럴럴
+            // 1. 리터럴 : number, string, boolean
             let val1 = p.name;  //꺼내오기
             let val2 = p['name'];  //꺼내오기
             
@@ -148,7 +147,6 @@
                 console.log(key);
                 let valu = p[key];
             }
-
         }
         let setPerson = function(name,bool,arr,item){
             // 객체를 만들어서 반환하는 방법
@@ -175,38 +173,38 @@
     <fieldset>
         <legend>출력</legend>
         <label for="menuName">메뉴명 : </label>
-        <input type="text" id="menuName" value="menuName"><br>
+        <input type="text" id="product_name"><br>
         <label for="price">가격 : </label>
-        <input type="price" id="price" value="price">
+        <input type="price" id="product_price">
     </fieldset>
     <!-- <ol id="list_ol"></ol> -->
-    <button onclick="insertBr();">입력</button>
-    <button onclick="printBr();">출력</button>
+    <button onclick="insertBread();">입력</button>
+    <button onclick="printBread();">출력</button>
     <script>
-        let insertBr = function(){
-            let menuName = document.getElementById('menuName').value;
-            let price = document.getElementById('price').value;
-
-            let br = printBr({name:menuName,price:price}); 
-            let br1 = br['name']['price'];
-
-            let inputText1 = prompt('메뉴명','메뉴명을 입력해주세요');
-            let inputText2 = prompt('가격','가격을 입력해주세요');
-            document.getElementById('menuName').value = inputText1;
-            document.getElementById('price').value = inputText2;
-            
-            alert(inputText1,inputText2);
-        }
-        let printBr = function(name,price){
-            let BrObj = {
-                name : name,
-                price : price
-                
-                // if(BrObj == null){
-                    
-                // }
+        let bread;
+        function insertBread(){
+            let productName = prompt('메뉴명 : ');
+            let productPrice = prompt("가격 : ");
+            bread = {
+                name : productName,
+                price : productPrice
             }
-            return BrObj;
+        }
+        function printBread(){
+            if(bread == null){
+                alert('정보가 입력되지 않았어요');
+            }else{
+                if(bread['name'] == null){
+                    alert('메뉴명이 입력되지 않았어요');
+                }else{
+                    if(bread['price'] == null){
+                        alert('가격이 입력되지 않았어요');
+                    }else{
+                        document.getElementById('product_name').value = bread['name'];
+                        document.getElementById('product_price').value = bread['price'];
+                    }
+                }
+            }
         }
     </script>
 

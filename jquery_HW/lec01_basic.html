@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../resources/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <h1>과제 1</h1>
+    <div id="prompt_div">
+        <h2>promt로 입력받기</h2>
+        <button>실행</button>
+        <div></div>
+    </div>
+    <script>
+        $(function(){
+            $('#prompt_div > button').on('click',function(){
+                let btnTest = prompt('메시지를 입력하세요');
+                $('#prompt_div div').each(function(index,item){
+                    //prompt창에 입력한 데이터 가져오기기
+                    $(item).text();
+                })
+            })
+        })
+    </script>
+    <h1>과제 2 / 랜덤뽑기</h1>
+    <button id="random_btn">실행하기</button>
+    <script>
+        // 1~100 랜덤값 
+        // 5개를 배열에 넣기 (Math,[],split)
+        // 내림차순 정렬(sort사용)
+        $(function(){
+            $('#random_btn').on('click',function(){
+                let mathCnt = [Math.floor(Math.random()*(100-1+1))+1];
+                console.log(mathCnt);
+                mathCnt.sort(function(left,right){
+                    return right-left;
+                });
+            })
+        })
+    </script>
+    <h1>과제 3 / 출석부</h1>
+    <button>출력 버튼</button>
+    <script>
+        
+    </script>
+
+
+    <h1>과제 4 / 과일가게 할인</h1>
+</body>
+</html> 

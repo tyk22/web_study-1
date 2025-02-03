@@ -19,7 +19,8 @@
                 let btnTest = prompt('메시지를 입력하세요');
                 $('#prompt_div div').each(function(index,item){
                     //prompt창에 입력한 데이터 가져오기기
-                    $(item).text();
+                    // 괄호 안을 비우면 가지고 오기이고 괄호 안에 값을 넣어주면 값을 바꿔주기기
+                    $('#prompt_div > div').text(btnTest);
                 })
             })
         })
@@ -32,6 +33,11 @@
         // 내림차순 정렬(sort사용)
         $(function(){
             $('#random_btn').on('click',function(){
+                let a = [];
+                a[0] = Math.floor(Math.random()*(100-1+1))+1;
+
+
+
                 let mathCnt = [Math.floor(Math.random()*(100-1+1))+1];
                 console.log(mathCnt);
                 mathCnt.sort(function(left,right){

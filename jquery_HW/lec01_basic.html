@@ -33,14 +33,18 @@
         // 내림차순 정렬(sort사용)
         $(function(){
             $('#random_btn').on('click',function(){
-                let a = [];
-                a[0] = Math.floor(Math.random()*(100-1+1))+1;
-
-                let mathCnt = [Math.floor(Math.random()*(100-1+1))+1];
-                console.log(mathCnt);
-                mathCnt.sort(function(left,right){
-                    return right-left;
-                });
+                let fiveArr = [];
+                fiveArr[0] = Math.floor(Math.random()*(100-1+1))+1;
+                fiveArr[1] = Math.floor(Math.random()*(100-1+1))+1;
+                fiveArr[2] = Math.floor(Math.random()*(100-1+1))+1;
+                fiveArr[3] = Math.floor(Math.random()*(100-1+1))+1;
+                fiveArr[4] = Math.floor(Math.random()*(100-1+1))+1;
+                console.log(fiveArr[3]);
+                // let mathCnt = [Math.floor(Math.random()*(100-1+1))+1];
+                // console.log(mathCnt);
+                // mathCnt.sort(function(left,right){
+                //     return right-left;
+                // });
             })
         })
     </script>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트</title>
+    <script src="../resources/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <h1>on 메소드</h1>
+    <div id="on_div">
+        <ul>
+            <li>html</li>
+            <li>css</li>
+            <li>javascript</li>
+        </ul>
+        <h3>h3이벤트</h3>
+    </div>
+    <script>
+        $(function(){
+            // $('#on_div > ul > li').on('mouseenter',function(){
+            //     console.log($(this).text());
+            // })
+            $('#on_div > ul >li').mouseenter(function(){ //간편이벤트로 써본 코드
+                console.log($(this).text());
+            })
+            $('#on_div > h3').on({
+                'mouseenter' : function(){$(this).css('color','red')},
+                'mouseleave' : function(){$(this).css('color','gold')}
+            });
+        })
+    </script>
+    <h1>off 메소드</h1>
+    <button id="offBtn">이벤트</button>
+    <script>
+        // 클릭이벤트가 2번만 동작하도록 설정하기
+        $(function(){
+            let count = 0;
+            $('#offBtn').on('click',function(){
+                if(count++ < 2){
+                    alert('버튼 클릭!');
+                } else{
+                    $(this).off('click');
+                }
+            })
+        })
+    </script>
+    <style>
+        .bg_mode{
+            color:white;
+            background-Color:black;
+        }
+    </style>
+    <button id="nightMode">야간모드</button>
+    <button id="dayMode">비활성화</button>
+    <script>
+        $(function(){
+            $('#nightMode').on('click',function(){
+                $('body').toggleClass('bg_mode');
+            })
+            $('#dayMode').on('click',function(){
+                $('#nightMode').off('click');
+            })
+        })
+    </script>
+
+</body>
+</html>

@@ -54,22 +54,22 @@
     </script>
     <br>
     <input type="text" id="img_src" src="../resources/dung.png"><br>
+    <button id="add_btn">추가</button>
     <input type="radio" name="brother" id="back" value="1" checked>
     <label for="back">뒤에 추가</label>
     <input type="radio" name="brother" id="front" value="2">
     <label for="front">앞에 추가</label>
-    <button id="add_btn">추가</button>
     <div id="img_div" style="border:2px solid green;">
         <p>기준</p>
     </div>
     <script>
         $(function(){
             $('#add_btn').click(function(){
-                let src = $('img_src').val();
-                if($('input[name=brother]:checked').val() == 1){
-                    $('#img_div').append(`<img src=${src} width=20>`);
+                let txt = $('img_src').val();
+                if($('input[name=brother]:checked').val() == 2){
+                    $('#img_div').prepend(`<img src=${txt} width=20>`);
                 } else{
-                    $('#img_div').prepend(`<img src=${src} width=20>`);
+                    $('#img_div').append(`<img src=${txt} width=20>`);
                 }
             })
         })

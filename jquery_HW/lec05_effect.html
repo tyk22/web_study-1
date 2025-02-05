@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>효과</title>
+    <script src="../resources/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <h1>공지사항 숨기기</h1>
+    <style>
+        #notice_div {
+            width: 300px;
+            padding: 20px;
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: none; /* 초기에는 숨김 */
+        }
+        #notice_Up{
+            display: none;
+        }
+    </style>
+    <button id="notice_Down">공지 보기</button>
+    <button id="notice_Up">공지 숨기기</button>
+    <div id="notice_div">
+        <div>
+            📢 공지사항 : 서버 점검으로 인해 내일 02:00
+            ~ 04:00 서비스가 중단됩니다.
+        </div>
+    </div>
+    <script>
+        $(function(){
+            let bool = true;
+            $('#notice_Down').click(function(){
+                if(bool){
+                    $('#notice_Down').css('display','none');
+                    $('#notice_Up').css('display','block');
+                    $('#notice_div').slideDown('slow');
+                }else{
+                    $('#notice_Down').css('display','block');
+                    $('#notice_Up').css('display','none');
+                    $('#notice_div').slideUp('slow');
+                }
+                bool = !bool;
+            })
+            $('#notice_Up').click(function(){
+                if(bool){
+                    $('#notice_Up').css('display','none');
+                    $('#notice_Down').css('display','block');
+                    $('#notice_div').slideDown('slow');
+                }else{
+                    $('#notice_Down').css('display','block');
+                    $('#notice_Up').css('display','none');
+                    $('#notice_div').slideUp('slow');
+                }
+                bool = !bool;
+            })
+        })
+    </script>
+</body>
+</html>

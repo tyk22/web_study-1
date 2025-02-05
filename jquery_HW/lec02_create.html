@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>요소 생성</title>
+    <script src="../resources/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <h1>1. 10개까지 추가</h1>
+    <div id="main_container">
+        <div id="container">
+            <input type="text">
+        </div>
+        <button id="add_Btn">추가</button>
+    </div>
+    <script>
+        $(function(){
+            $('#add_Btn').click(function(){
+                let addDiv = $('#container').clone(true);
+                $('#main_container').append(addDiv);
+            })
+        })
+        // let num = 10;
+        // const addBtn = function(){
+        //     $('#text')
+        // }
+
+    </script>
+</body>
+</html>
